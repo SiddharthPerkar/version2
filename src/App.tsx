@@ -49,7 +49,7 @@ function App() {
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center">
               <img
-                src="https://i.ibb.co/fYCc6SLz/L-1.png"
+                src="https://i.ibb.co/ym5kZg9x/L-2.png"
                 alt="The Webloom Logo"
                 className="h-8 w-auto"
               />
