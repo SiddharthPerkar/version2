@@ -370,6 +370,30 @@ function ContactPage() {
   );
 }
 
+const portfolioItems = [
+  {
+    image:
+      'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400',
+    title: 'E-commerce Platform',
+    description: 'Built with React and Node.js processing $1M+ monthly sales',
+    technologies: ['React', 'Node.js'],
+  },
+  {
+    image:
+      'https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400',
+    title: 'Fitness Mobile App',
+    description: 'Cross-platform fitness tracking application',
+    technologies: ['Flutter', 'Firebase'],
+  },
+  {
+    image:
+      'https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400',
+    title: 'Corporate Website',
+    description: 'Enterprise website with CMS integration',
+    technologies: ['WordPress', 'PHP'],
+  },
+];
+
 function HomePage() {
   useEffect(() => {
     const script = document.createElement('script');
@@ -463,28 +487,39 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Portfolio Section */}
+      {/* Our Work Section */}
       <section className="py-12 md:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">
-            Our Portfolio
+            Our Work
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <PortfolioItem
-              image="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              title="E-commerce Platform"
-              category="Web Development"
-            />
-            <PortfolioItem
-              image="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              title="Mobile App Design"
-              category="UI/UX"
-            />
-            <PortfolioItem
-              image="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-              title="Brand Identity"
-              category="Branding"
-            />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {portfolioItems.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-lg overflow-hidden"
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                  <p className="text-gray-600 mb-4">{item.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {item.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="bg-gray-100 px-3 py-1 rounded-full text-sm"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
