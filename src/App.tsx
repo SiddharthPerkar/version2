@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Code2,
   Rocket,
@@ -265,10 +265,29 @@ function ContactPage() {
     email: '',
     message: '',
   });
-  const handleSubmit = (e) => {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log(formData);
+    const formData = new FormData(e.target);
+    formData.append('access_key', 'YOUR_WEB3FORMS_ACCESS_KEY');
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: json,
+    }).then((res) => res.json());
+
+    if (res.success) {
+      setSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
+    }
   };
 
   return (
@@ -277,65 +296,120 @@ function ContactPage() {
         <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12">
           Contact Us
         </h1>
-        <div className="bg-gray-50 rounded-2xl p-8 md:p-12 max-w-3xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-1">
-                <label className="flex items-center gap-2 text-gray-700">
-                  <User className="w-5 h-5" /> Full Name
-                </label>
-                <input
-                  type="text"
-                  required
-                  className="w-full p-3 rounded-lg border border-gray-300"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                />
+        {submitted ? (
+          <div className="text-center text-green-600 p-8">
+            <Check className="w-12 h-12 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold mb-2">Message Sent!</h2>
+            <p>We'll get back to you within 24 hours.</p>
+          </div>
+        ) : (
+          <div className="bg-gray-50 rounded-2xl p-8 md:p-12 max-w-3xl mx-auto">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <input
+                type="hidden"
+                name="subject"
+                value="New Contact Form Submission"
+              />
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-1">
+                  <label className="flex items-center gap-2 text-gray-700">
+                    <User className="w-5 h-5" /> Full Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    className="w-full p-3 rounded-lg border border-gray-300"
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="flex items-center gap-2 text-gray-700">
+                    <Mail className="w-5 h-5" /> Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    className="w-full p-3 rounded-lg border border-gray-300"
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                  />
+                </div>
               </div>
               <div className="space-y-1">
                 <label className="flex items-center gap-2 text-gray-700">
-                  <Mail className="w-5 h-5" /> Email
+                  <MessageSquare className="w-5 h-5" /> Message
                 </label>
-                <input
-                  type="email"
-                  required
+                <textarea
+                  name="message"
+                  rows="4"
                   className="w-full p-3 rounded-lg border border-gray-300"
-                  value={formData.email}
+                  value={formData.message}
                   onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
+                    setFormData({ ...formData, message: e.target.value })
                   }
-                />
+                ></textarea>
               </div>
-            </div>
-            <div className="space-y-1">
-              <label className="flex items-center gap-2 text-gray-700">
-                <MessageSquare className="w-5 h-5" /> Message
-              </label>
-              <textarea
-                rows="4"
-                className="w-full p-3 rounded-lg border border-gray-300"
-                value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-[#002366] text-white py-3 rounded-lg font-semibold hover:bg-[#001a4d] transition-colors"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
+              <button
+                type="submit"
+                className="w-full bg-[#002366] text-white py-3 rounded-lg font-semibold hover:bg-[#001a4d] transition-colors"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
 function HomePage() {
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.innerHTML = `
+      (function (C, A, L) { 
+        let p = function (a, ar) { a.q.push(ar); }; 
+        let d = C.document; 
+        C.Cal = C.Cal || function () { 
+          let cal = C.Cal; 
+          let ar = arguments; 
+          if (!cal.loaded) { 
+            cal.ns = {}; 
+            cal.q = cal.q || []; 
+            d.head.appendChild(d.createElement("script")).src = A; 
+            cal.loaded = true; 
+          } 
+          if (ar[0] === L) { 
+            const api = function () { p(api, arguments); }; 
+            const namespace = ar[1]; 
+            api.q = api.q || []; 
+            if(typeof namespace === "string"){
+              cal.ns[namespace] = cal.ns[namespace] || api;
+              p(cal.ns[namespace], ar);
+              p(cal, ["initNamespace", namespace]);
+            } else p(cal, ar); 
+            return;
+          } p(cal, ar); 
+        }; 
+      })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "let-s-dicuss-about-you-plan", {origin:"https://cal.com"});
+      Cal.ns["let-s-dicuss-about-you-plan"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+    `;
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   return (
     <>
       {/* Hero Section */}
@@ -349,8 +423,14 @@ function HomePage() {
               Elevate your brand with cutting-edge web solutions and innovative
               digital strategies that bloom into success.
             </p>
-            <button className="bg-white text-[#002366] px-6 py-3 md:px-8 md:py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2">
-              Get Started <ArrowRight className="w-5 h-5" />
+            <button
+              id="cal-booking"
+              data-cal-link="thewebloom/let-s-dicuss-about-you-plan"
+              data-cal-namespace="let-s-dicuss-about-you-plan"
+              data-cal-config='{"layout":"month_view"}'
+              className="bg-white text-[#002366] px-6 py-3 md:px-8 md:py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
+            >
+              Schedule Consultation <ArrowRight className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -378,6 +458,32 @@ function HomePage() {
               icon={<Palette className="w-8 h-8" />}
               title="Brand Strategy"
               description="Compelling brand narratives that resonate with your audience."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section className="py-12 md:py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">
+            Our Portfolio
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <PortfolioItem
+              image="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              title="E-commerce Platform"
+              category="Web Development"
+            />
+            <PortfolioItem
+              image="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              title="Mobile App Design"
+              category="UI/UX"
+            />
+            <PortfolioItem
+              image="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              title="Brand Identity"
+              category="Branding"
             />
           </div>
         </div>
@@ -417,13 +523,80 @@ function HomePage() {
               Let's create something extraordinary together. Your digital
               success story starts here.
             </p>
-            <button className="bg-white text-[#002366] px-6 py-3 md:px-8 md:py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2">
+            <button
+              className="bg-white text-[#002366] px-6 py-3 md:px-8 md:py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
+              onClick={() => setCurrentPage('contact')}
+            >
               Contact Us <ArrowRight className="w-5 h-5" />
             </button>
           </div>
         </div>
       </section>
     </>
+  );
+}
+
+// Portfolio Item Component
+function PortfolioItem({ image, title, category }) {
+  return (
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+      <img src={image} alt={title} className="w-full h-64 object-cover" />
+      <div className="p-6">
+        <span className="text-sm text-[#FF0000]">{category}</span>
+        <h3 className="text-xl font-semibold mt-2">{title}</h3>
+      </div>
+    </div>
+  );
+}
+
+function PortfolioSection() {
+  const portfolioItems = [
+    {
+      image:
+        'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      title: 'E-commerce Platform',
+      category: 'Web Development',
+    },
+    {
+      image:
+        'https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      title: 'Mobile App Design',
+      category: 'UI/UX',
+    },
+    {
+      image:
+        'https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+      title: 'Brand Identity',
+      category: 'Branding',
+    },
+  ];
+
+  return (
+    <section className="py-12 md:py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">
+          Our Portfolio
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {portfolioItems.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl shadow-lg overflow-hidden"
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-6">
+                <span className="text-sm text-[#FF0000]">{item.category}</span>
+                <h3 className="text-xl font-semibold mt-2">{item.title}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -602,7 +775,7 @@ function TeamPage({ setCurrentPage }) {
           Our Leadership Team
         </h1>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 ">
           <TeamMemberCard
             image="https://i.ibb.co/CKxdQ24X/sidd.png"
             name="Siddharth Perkar"
@@ -866,7 +1039,7 @@ function ProcessStep({ number, title, description }) {
 function BlogCard({ image, title, excerpt, date, author, category }) {
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-      <img src={image} alt={title} className="w-full h-48 object-cover" />
+      <img src={image} alt={title} className="w-full h-56 object-cover" />
       <div className="p-6">
         <div className="text-sm text-[#FF0000] mb-2">{category}</div>
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
@@ -911,7 +1084,7 @@ function TestimonialCard({ name, company, content, image }) {
 function TeamMemberCard({ image, name, role, description }) {
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-      <img src={image} alt={name} className="w-full h-64 object-cover" />
+      <img src={image} alt={name} className="w-full h-72 object-cover" />
       <div className="p-6">
         <h3 className="text-xl font-semibold mb-1">{name}</h3>
         <p className="text-[#FF0000] mb-3">{role}</p>
