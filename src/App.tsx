@@ -31,9 +31,11 @@ function App() {
       case 'testimonials':
         return <TestimonialsPage />;
       case 'team':
-        return <TeamPage />;
+        return <TeamPage setCurrentPage={setCurrentPage} />;
       case 'contact':
         return <ContactPage />;
+      case 'careers':
+        return <CareersPage />;
       default:
         return <HomePage />;
     }
@@ -257,6 +259,82 @@ function App() {
   );
 }
 
+function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log(formData);
+  };
+
+  return (
+    <div className="py-12 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12">
+          Contact Us
+        </h1>
+        <div className="bg-gray-50 rounded-2xl p-8 md:p-12 max-w-3xl mx-auto">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-1">
+                <label className="flex items-center gap-2 text-gray-700">
+                  <User className="w-5 h-5" /> Full Name
+                </label>
+                <input
+                  type="text"
+                  required
+                  className="w-full p-3 rounded-lg border border-gray-300"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="flex items-center gap-2 text-gray-700">
+                  <Mail className="w-5 h-5" /> Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  className="w-full p-3 rounded-lg border border-gray-300"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                />
+              </div>
+            </div>
+            <div className="space-y-1">
+              <label className="flex items-center gap-2 text-gray-700">
+                <MessageSquare className="w-5 h-5" /> Message
+              </label>
+              <textarea
+                rows="4"
+                className="w-full p-3 rounded-lg border border-gray-300"
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-[#002366] text-white py-3 rounded-lg font-semibold hover:bg-[#001a4d] transition-colors"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function HomePage() {
   return (
     <>
@@ -271,14 +349,9 @@ function HomePage() {
               Elevate your brand with cutting-edge web solutions and innovative
               digital strategies that bloom into success.
             </p>
-            {/* <button className="bg-white text-[#002366] px-6 py-3 md:px-8 md:py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2">
+            <button className="bg-white text-[#002366] px-6 py-3 md:px-8 md:py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2">
               Get Started <ArrowRight className="w-5 h-5" />
-            </button> */}
-          
-
-
-
-
+            </button>
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-white"></div>
@@ -521,50 +594,192 @@ function TestimonialsPage() {
   );
 }
 
-function TeamPage() {
+function TeamPage({ setCurrentPage }) {
+  return (
+    <div className="py-20">
+      {/* ... existing TeamPage content ... */}
+      <div className="mt-20 text-center">
+        <h2 className="text-3xl font-bold mb-8">Join Our Team</h2>
+        {/* Update button onClick */}
+        <button
+          onClick={() => setCurrentPage('careers')}
+          className="bg-[#002366] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#001a4d] transition-colors"
+        >
+          View Open Positions
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function CareersPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    position: '',
+    resume: null,
+    coverLetter: '',
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log(formData);
+  };
+
+  const jobs = [
+    {
+      title: 'Frontend Developer',
+      location: 'Remote',
+      type: 'Full Time',
+      description:
+        'Build beautiful and responsive web interfaces using modern technologies.',
+    },
+    {
+      title: 'Digital Marketing Specialist',
+      location: 'Mumbai',
+      type: 'Contract',
+      description: 'Drive digital campaigns and optimize customer acquisition.',
+    },
+    {
+      title: 'UI/UX Designer',
+      location: 'Bengaluru',
+      type: 'Full Time',
+      description: 'Create intuitive and visually stunning user experiences.',
+    },
+  ];
+
   return (
     <div className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-center mb-12">
-          Our Leadership Team
+          Career Opportunities
         </h1>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <TeamMemberCard
-            image="https://ibb.co/4n5hqv92.png"
-            name="Siddharth Perkar"
-            role="CEO & Cofounder"
-            description="Visionary leader with expertise in business strategy and digital innovation."
-          />
-          <TeamMemberCard
-            image="https://ibb.co/s97tYSXC.png"
-            name="Abhishek Pawar"
-            role="CTO & Cofounder"
-            description="Technical genius behind our innovative solutions and development strategies."
-          />
-          <TeamMemberCard
-            image="https://ibb.co/GfM9QX0w.png"
-            name="Darshan Mali"
-            role="CMO & Cofounder"
-            description="Marketing strategist driving our brand's growth and client success."
-          />
-          <TeamMemberCard
-            image="https://ibb.co/Y7jmJ7PJ.png"
-            name="Samarth Kuwar"
-            role="CIO & Cofounder"
-            description="Information systems expert ensuring seamless digital operations."
-          />
+        {/* Job Listings */}
+        <div className="grid md:grid-cols-2 gap-8 mb-20">
+          {jobs.map((job, index) => (
+            <div key={index} className="bg-white p-6 rounded-xl shadow-lg">
+              <h3 className="text-xl font-semibold mb-2">{job.title}</h3>
+              <div className="flex gap-4 mb-4 text-gray-600">
+                <span className="flex items-center gap-1">
+                  <MapPin className="w-5 h-5" /> {job.location}
+                </span>
+                <span className="flex items-center gap-1">
+                  <Briefcase className="w-5 h-5" /> {job.type}
+                </span>
+              </div>
+              <p className="text-gray-600">{job.description}</p>
+            </div>
+          ))}
         </div>
 
-        <div className="mt-20 text-center">
-          <h2 className="text-3xl font-bold mb-8">Join Our Team</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            We're always looking for talented individuals who are passionate
-            about digital innovation and creating exceptional user experiences.
-          </p>
-          <button className="bg-[#002366] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#001a4d] transition-colors">
-            View Open Positions
-          </button>
+        {/* Application Form */}
+        <div className="bg-gray-50 rounded-2xl p-8 md:p-12 max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-8">Apply Now</h2>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-1">
+                <label className="flex items-center gap-2 text-gray-700">
+                  <User className="w-5 h-5" /> Full Name
+                </label>
+                <input
+                  type="text"
+                  required
+                  className="w-full p-3 rounded-lg border border-gray-300"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="flex items-center gap-2 text-gray-700">
+                  <Mail className="w-5 h-5" /> Email
+                </label>
+                <input
+                  type="email"
+                  required
+                  className="w-full p-3 rounded-lg border border-gray-300"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="flex items-center gap-2 text-gray-700">
+                  <Phone className="w-5 h-5" /> Phone
+                </label>
+                <input
+                  type="tel"
+                  required
+                  className="w-full p-3 rounded-lg border border-gray-300"
+                  value={formData.phone}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
+                  }
+                />
+              </div>
+              <div className="space-y-1">
+                <label className="flex items-center gap-2 text-gray-700">
+                  <Briefcase className="w-5 h-5" /> Position
+                </label>
+                <select
+                  required
+                  className="w-full p-3 rounded-lg border border-gray-300 bg-white"
+                  value={formData.position}
+                  onChange={(e) =>
+                    setFormData({ ...formData, position: e.target.value })
+                  }
+                >
+                  <option value="">Select Position</option>
+                  {jobs.map((job, index) => (
+                    <option key={index} value={job.title}>
+                      {job.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="space-y-1">
+              <label className="flex items-center gap-2 text-gray-700">
+                <BookOpen className="w-5 h-5" /> Resume (PDF only)
+              </label>
+              <input
+                type="file"
+                accept=".pdf"
+                required
+                className="w-full p-3 rounded-lg border border-gray-300"
+                onChange={(e) =>
+                  setFormData({ ...formData, resume: e.target.files[0] })
+                }
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label className="flex items-center gap-2 text-gray-700">
+                <MessageSquare className="w-5 h-5" /> Cover Letter
+              </label>
+              <textarea
+                rows="4"
+                className="w-full p-3 rounded-lg border border-gray-300"
+                value={formData.coverLetter}
+                onChange={(e) =>
+                  setFormData({ ...formData, coverLetter: e.target.value })
+                }
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-[#002366] text-white py-3 rounded-lg font-semibold hover:bg-[#001a4d] transition-colors"
+            >
+              Submit Application
+            </button>
+          </form>
         </div>
       </div>
     </div>
