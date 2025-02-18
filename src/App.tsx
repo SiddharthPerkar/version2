@@ -531,25 +531,25 @@ function TeamPage() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <TeamMemberCard
-            image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+            image="https://ibb.co/4n5hqv92"
             name="Siddharth Perkar"
             role="CEO & Cofounder"
             description="Visionary leader with expertise in business strategy and digital innovation."
           />
           <TeamMemberCard
-            image="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+            image="https://ibb.co/s97tYSXC"
             name="Abhishek Pawar"
             role="CTO & Cofounder"
             description="Technical genius behind our innovative solutions and development strategies."
           />
           <TeamMemberCard
-            image="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+            image="https://ibb.co/GfM9QX0w"
             name="Darshan Mali"
             role="CMO & Cofounder"
             description="Marketing strategist driving our brand's growth and client success."
           />
           <TeamMemberCard
-            image="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+            image="https://ibb.co/Y7jmJ7PJ"
             name="Samarth Kuwar"
             role="CIO & Cofounder"
             description="Information systems expert ensuring seamless digital operations."
