@@ -622,7 +622,7 @@ function TeamPage({ setCurrentPage }) {
             description="Marketing strategist driving our brand's growth and client success."
           />
           <TeamMemberCard
-            image="https://ibb.co/Y7jmJ7PJ"
+            image="https://i.ibb.co/G4vhjxDH/sam.jpg"
             name="Samarth Kuwar"
             role="CIO & Cofounder"
             description="Information systems expert ensuring seamless digital operations."
