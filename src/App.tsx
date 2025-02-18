@@ -531,25 +531,25 @@ function TeamPage() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <TeamMemberCard
-            image="https://ibb.co/4n5hqv92"
+            image="https://ibb.co/4n5hqv92.png"
             name="Siddharth Perkar"
             role="CEO & Cofounder"
             description="Visionary leader with expertise in business strategy and digital innovation."
           />
           <TeamMemberCard
-            image="https://ibb.co/s97tYSXC"
+            image="https://ibb.co/s97tYSXC.png"
             name="Abhishek Pawar"
             role="CTO & Cofounder"
             description="Technical genius behind our innovative solutions and development strategies."
           />
           <TeamMemberCard
-            image="https://ibb.co/GfM9QX0w"
+            image="https://ibb.co/GfM9QX0w.png"
             name="Darshan Mali"
             role="CMO & Cofounder"
             description="Marketing strategist driving our brand's growth and client success."
           />
           <TeamMemberCard
-            image="https://ibb.co/Y7jmJ7PJ"
+            image="https://ibb.co/Y7jmJ7PJ.png"
             name="Samarth Kuwar"
             role="CIO & Cofounder"
             description="Information systems expert ensuring seamless digital operations."
