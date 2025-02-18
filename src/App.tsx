@@ -597,16 +597,51 @@ function TestimonialsPage() {
 function TeamPage({ setCurrentPage }) {
   return (
     <div className="py-20">
-      {/* ... existing TeamPage content ... */}
-      <div className="mt-20 text-center">
-        <h2 className="text-3xl font-bold mb-8">Join Our Team</h2>
-        {/* Update button onClick */}
-        <button
-          onClick={() => setCurrentPage('careers')}
-          className="bg-[#002366] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#001a4d] transition-colors"
-        >
-          View Open Positions
-        </button>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-4xl font-bold text-center mb-12">
+          Our Leadership Team
+        </h1>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <TeamMemberCard
+            image="https://i.ibb.co/CKxdQ24X/sidd.png"
+            name="Siddharth Perkar"
+            role="CEO & Cofounder"
+            description="Visionary leader with expertise in business strategy and digital innovation."
+          />
+          <TeamMemberCard
+            image="https://i.ibb.co/QFcCzXX8/abhi.jpg"
+            name="Abhishek Pawar"
+            role="CTO & Cofounder"
+            description="Technical genius behind our innovative solutions and development strategies."
+          />
+          <TeamMemberCard
+            image="https://i.ibb.co/GvsmD6P2/darsh.png"
+            name="Darshan Mali"
+            role="CMO & Cofounder"
+            description="Marketing strategist driving our brand's growth and client success."
+          />
+          <TeamMemberCard
+            image="https://ibb.co/Y7jmJ7PJ"
+            name="Samarth Kuwar"
+            role="CIO & Cofounder"
+            description="Information systems expert ensuring seamless digital operations."
+          />
+        </div>
+
+        <div className="mt-20 text-center">
+          <h2 className="text-3xl font-bold mb-8">Join Our Team</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+            We're always looking for talented individuals who are passionate
+            about digital innovation and creating exceptional user experiences.
+          </p>
+          <button
+            onClick={() => setCurrentPage('careers')}
+            className="bg-[#002366] text-white px-8 py-3 rounded-full font-semibold hover:bg-[#001a4d] transition-colors"
+          >
+            View Open Positions
+          </button>
+        </div>
       </div>
     </div>
   );
