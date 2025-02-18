@@ -588,8 +588,8 @@ function PortfolioSection() {
   const portfolioItems = [
     {
       image:
-        'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      title: 'E-commerce Platform',
+        'https://i.ibb.co/gZH1zWDR/screely-1739906855253.png',
+      title: 'CroptechFert',
       category: 'Web Development',
     },
     {
