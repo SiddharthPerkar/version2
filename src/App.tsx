@@ -373,8 +373,8 @@ function ContactPage() {
 const portfolioItems = [
   {
     image:
-      'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400',
-    title: 'E-commerce Platform',
+      'https://i.ibb.co/gZH1zWDR/screely-1739906855253.png',
+    title: 'E-commerce website',
     description: 'Built with React and Node.js processing $1M+ monthly sales',
     technologies: ['React', 'Node.js'],
   },
@@ -532,8 +532,8 @@ function HomePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <TestimonialCard
-              name="Rajesh Kumar"
-              company="TechVision India"
+              name="Shubam Sawant"
+              company="CropTechFert Nashik"
               content="The Webloom transformed our online presence completely. Their innovative approach and attention to detail exceeded our expectations."
               image="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
             />
@@ -589,7 +589,7 @@ function PortfolioSection() {
     {
       image:
         'https://i.ibb.co/gZH1zWDR/screely-1739906855253.png',
-      title: 'CroptechFert',
+      title: 'Agricultur Webiste',
       category: 'Web Development',
     },
     {
