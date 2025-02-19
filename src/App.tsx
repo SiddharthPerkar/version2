@@ -16,6 +16,16 @@ import {
   User,
   Star,
   Briefcase,
+  Clock,
+  Award,
+  Smile,
+  ThumbsUp,
+  Cloud,
+  Shield,
+  BarChart,
+  Smartphone,
+  Search,
+  Share2,
 } from 'lucide-react';
 
 function App() {
@@ -37,7 +47,7 @@ function App() {
       case 'careers':
         return <CareersPage />;
       default:
-        return <HomePage />;
+        return <HomePage setCurrentPage={setCurrentPage} />;
     }
   };
 
@@ -349,7 +359,7 @@ function ContactPage() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-1">
                   <label className="flex items-center gap-2 text-gray-700">
-                    <User className="w-5 h-5" /> Full Name
+                    <User  className="w-5 h-5" /> Full Name
                   </label>
                   <input
                     type="text"
@@ -429,7 +439,7 @@ const portfolioItems = [
   },
 ];
 
-function HomePage() {
+function HomePage({ setCurrentPage }) {
   useEffect(() => {
     const script = document.createElement('script');
     script.type = 'text/javascript';
@@ -496,6 +506,33 @@ function HomePage() {
         <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-b from-transparent to-white"></div>
       </header>
 
+      <section className="py-12 md:py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <StatCard
+              icon={<Clock className="w-8 h-8" />}
+              value="2+"
+              label="Years of Experience"
+            />
+            <StatCard
+              icon={<Award className="w-8 h-8" />}
+              value="20+"
+              label="Projects Completed"
+            />
+            <StatCard
+              icon={<Smile className="w-8 h-8" />}
+              value="15+"
+              label="Happy Clients"
+            />
+            <StatCard
+              icon={<ThumbsUp className="w-8 h-8" />}
+              value="98%"
+              label="Client Satisfaction"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Services Preview */}
       <section className="py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -509,14 +546,44 @@ function HomePage() {
               description="Custom websites that captivate and convert visitors."
             />
             <ServiceCard
+              icon={<Smartphone className="w-8 h-8" />}
+              title="Mobile App Development"
+              description="Native and cross-platform mobile applications."
+            />
+            <ServiceCard
+              icon={<Search className="w-8 h-8" />}
+              title="SEO Optimization"
+              description="Boost your visibility and organic traffic."
+            />
+            <ServiceCard
+              icon={<Cloud className="w-8 h-8" />}
+              title="Cloud Solutions"
+              description="Scalable and secure cloud infrastructure."
+            />
+            <ServiceCard
+              icon={<Shield className="w-8 h-8" />}
+              title="Cybersecurity"
+              description="Protect your digital assets and data."
+            />
+            <ServiceCard
+              icon={<BarChart className="w-8 h-8" />}
+              title="Analytics & Reporting"
+              description="Data-driven insights for better decisions."
+            />
+            <ServiceCard
+              icon={<Share2 className="w-8 h-8" />}
+              title="Social Media Management"
+              description="Engage and grow your online community."
+            />
+            <ServiceCard
               icon={<Rocket className="w-8 h-8" />}
               title="Digital Marketing"
-              description="Strategic campaigns that drive growth and engagement."
+              description="Strategic campaigns that drive growth."
             />
             <ServiceCard
               icon={<Palette className="w-8 h-8" />}
               title="Brand Strategy"
-              description="Compelling brand narratives that resonate with your audience."
+              description="Build a compelling brand identity."
             />
           </div>
         </div>
@@ -603,6 +670,17 @@ function HomePage() {
         </div>
       </section>
     </>
+  );
+}
+
+// Stat Card Component
+function StatCard({ icon, value, label }) {
+  return (
+    <div className="bg-white p-6 rounded-xl shadow-lg text-center">
+      <div className="text-[#FF0000] mb-4">{icon}</div>
+      <h3 className="text-2xl font-bold">{value}</h3>
+      <p className="text-gray-600">{label}</p>
+    </div>
   );
 }
 
@@ -959,7 +1037,7 @@ function CareersPage() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-1">
                 <label className="flex items-center gap-2 text-gray-700">
-                  <User className="w-5 h-5" /> Full Name
+                  <User  className="w-5 h-5" /> Full Name
                 </label>
                 <input
                   type="text"
