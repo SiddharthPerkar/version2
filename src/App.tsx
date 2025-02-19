@@ -1,5 +1,3 @@
-without floating bar 
-
 import React, { useState, useEffect } from 'react';
 import {
   Code2,
@@ -245,10 +243,46 @@ function App() {
             <div>
               <h4 className="font-semibold mb-4">Connect</h4>
               <ul className="space-y-2 text-gray-300">
-                <li>Twitter</li>
-                <li>LinkedIn</li>
-                <li>Instagram</li>
-                <li>Facebook</li>
+                <li>
+                  <a
+                    href="https://thewebloom.tech"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white"
+                  >
+                    Website
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/company/thewebloom/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/thewebloom"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white"
+                  >
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://jsdl.in/DT-46CG1J5VDR1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white"
+                  >
+                    JustDial
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -374,8 +408,7 @@ function ContactPage() {
 
 const portfolioItems = [
   {
-    image:
-      'https://i.ibb.co/gZH1zWDR/screely-1739906855253.png',
+    image: 'https://i.ibb.co/gZH1zWDR/screely-1739906855253.png',
     title: 'E-commerce website',
     description: 'Built with React and Node.js processing $1M+ monthly sales',
     technologies: ['React', 'Node.js'],
@@ -589,8 +622,7 @@ function PortfolioItem({ image, title, category }) {
 function PortfolioSection() {
   const portfolioItems = [
     {
-      image:
-        'https://i.ibb.co/gZH1zWDR/screely-1739906855253.png',
+      image: 'https://i.ibb.co/gZH1zWDR/screely-1739906855253.png',
       title: 'Agricultur Webiste',
       category: 'Web Development',
     },
