@@ -1,3 +1,5 @@
+without floating bar 
+
 import React, { useState, useEffect } from 'react';
 import {
   Code2,
@@ -21,18 +23,6 @@ import {
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-      setIsScrolled(scrollTop > 100);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const renderContent = () => {
     switch (currentPage) {
@@ -56,18 +46,8 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav
-        className={`z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'fixed top-4 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-lg rounded-full shadow-lg py-0 px-6 max-w-2xl w-full'
-            : 'static bg-white shadow-sm'
-        }`}
-      >
-        <div
-          className={`max-w-7xl mx-auto ${
-            isScrolled ? '' : 'px-4 sm:px-5 lg:px-8'
-          }`}
-        >
+      <nav className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center">
               <img
@@ -394,7 +374,8 @@ function ContactPage() {
 
 const portfolioItems = [
   {
-    image: 'https://i.ibb.co/gZH1zWDR/screely-1739906855253.png',
+    image:
+      'https://i.ibb.co/gZH1zWDR/screely-1739906855253.png',
     title: 'E-commerce website',
     description: 'Built with React and Node.js processing $1M+ monthly sales',
     technologies: ['React', 'Node.js'],
@@ -608,7 +589,8 @@ function PortfolioItem({ image, title, category }) {
 function PortfolioSection() {
   const portfolioItems = [
     {
-      image: 'https://i.ibb.co/gZH1zWDR/screely-1739906855253.png',
+      image:
+        'https://i.ibb.co/gZH1zWDR/screely-1739906855253.png',
       title: 'Agricultur Webiste',
       category: 'Web Development',
     },
