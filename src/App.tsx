@@ -868,22 +868,22 @@ function BlogPage() {
             link="https://blog.thewebloom.tech/how-my-coffee-chat-turned-into-a-vc-pitch-masterclass-6-tips-every-founder-needs-13a3bb998df6" // Add the link to the blog post
           />
           <BlogCard
-            image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-            title="Maximizing ROI with Digital Marketing"
-            excerpt="Learn how to optimize your digital marketing strategy for better returns"
-            date="March 12, 2024"
+            image="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*VOZmggmqEA9QSJ9dCt-CpA.jpeg"
+            title="Starting a Business? Here’s Why META Ads Are a Game-Changer!"
+            excerpt="Meta Ads Unlocked: Turning Clicks into Customers, Rupees into Revenue!"
+            date="February 23, 2025"
             author="Darshan Mali"
             category="Marketing"
-            link="/blog/maximizing-roi-digital-marketing" // Add the link to the blog post
+            link="https://blog.thewebloom.tech/starting-a-business-heres-why-meta-ads-are-a-game-changer-0254f154fc31" // Add the link to the blog post
           />
           <BlogCard
-            image="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-            title="Building a Strong Brand Identity"
-            excerpt="Essential steps to create a memorable and impactful brand presence"
-            date="March 10, 2024"
-            author="Samarth Kuwar"
-            category="Branding"
-            link="/blog/strong-brand-identity" // Add the link to the blog post
+            image="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*YiAPDtgOId3rOezcvKWA4w.jpeg"
+            title="The Power of Startups: Why You Don’t Need an IIT Tag to Hire IITians"
+            excerpt="Let’s start with a confession: I didn’t go to an IIT. Neither did a..."
+            date="March 5, 2025"
+            author="Siddharth Perkar"
+            category="Entrepreneurship"
+            link="https://blog.thewebloom.tech/the-power-of-startups-why-you-dont-need-an-iit-tag-to-hire-iitians-043b61bda6aa" // Add the link to the blog post
           />
         </div>
       </div>
