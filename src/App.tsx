@@ -312,27 +312,29 @@ function ContactPage() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+    
     const formData = new FormData(e.target);
-    formData.append('access_key', 'YOUR_WEB3FORMS_ACCESS_KEY');
+    formData.append('access_key', '6d64eedb-e229-459c-85ca-679f847ace0e'); // Replace with your actual key
 
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      }).then((res) => res.json());
 
-    const res = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: json,
-    }).then((res) => res.json());
-
-    if (res.success) {
-      setSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
+      if (res.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setError(res.message || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setError('Failed to submit form. Please check your connection.');
     }
   };
 
@@ -354,12 +356,23 @@ function ContactPage() {
               <input
                 type="hidden"
                 name="subject"
-                value="New Contact Form Submission"
+                value="New Contact Form Submission from The Webloom"
               />
+              <input
+                type="hidden"
+                name="access_key"
+                value="YOUR_WEB3FORMS_ACCESS_KEY" // Replace with your actual key
+              />
+              
+              {error && (
+                <div className="text-red-500 text-center mb-4">{error}</div>
+              )}
+
               <div className="grid md:grid-cols-2 gap-6">
+                {/* Rest of the form inputs remain the same */}
                 <div className="space-y-1">
                   <label className="flex items-center gap-2 text-gray-700">
-                    <User  className="w-5 h-5" /> Full Name
+                    <User className="w-5 h-5" /> Full Name
                   </label>
                   <input
                     type="text"
