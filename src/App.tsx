@@ -1206,9 +1206,15 @@ function ProcessStep({ number, title, description }) {
 }
 
 // Component for Blog Cards
+// Component for Blog Cards
 function BlogCard({ image, title, excerpt, date, author, category, link }) {
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer" className="bg-white rounded-xl shadow-lg overflow-hidden">
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl" // Add hover effects here
+    >
       <img src={image} alt={title} className="w-full h-56 object-cover" />
       <div className="p-6">
         <div className="text-sm text-[#FF0000] mb-2">{category}</div>
@@ -1222,7 +1228,6 @@ function BlogCard({ image, title, excerpt, date, author, category, link }) {
     </a>
   );
 }
-
 // Component for Testimonial Cards
 function TestimonialCard({ name, company, content, image }) {
   return (
