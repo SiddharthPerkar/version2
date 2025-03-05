@@ -967,7 +967,7 @@ function TeamPage({ setCurrentPage }) {
           <TeamMemberCard
             image="https://i.ibb.co/7dcGZj86/Untitled-design.jpg" // Replace with the actual image URL for Purushottam
             name="Purushottam Gaikwad"
-            role="Cofounder & Fullstack Developer"
+            role="Cofounder & Lead Fullstack Developer"
             description="Expert in both frontend and backend technologies, driving full-stack development."
           />
         </div>
