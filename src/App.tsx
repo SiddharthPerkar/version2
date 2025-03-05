@@ -859,12 +859,13 @@ function BlogPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <BlogCard
-            image="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-            title="The Future of Web Development in 2024"
-            excerpt="Explore the latest trends and technologies shaping the web development landscape"
-            date="March 15, 2024"
+            image="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*iCQd0CuT-Ol_mq5a2YWn_A.jpeg"
+            title="How My Coffee Chat Turned Into a VC Pitch Masterclass (6 Tips Every Founder Needs)"
+            excerpt="It was the end of the semester, on a chilly February evening, marking the cul..."
+            date="February 24, 2025"
             author="Abhishek Pawar"
-            category="Technology"
+            category="Entrepreneurship"
+            link="https://blog.thewebloom.tech/how-my-coffee-chat-turned-into-a-vc-pitch-masterclass-6-tips-every-founder-needs-13a3bb998df6" // Add the link to the blog post
           />
           <BlogCard
             image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
@@ -873,6 +874,7 @@ function BlogPage() {
             date="March 12, 2024"
             author="Darshan Mali"
             category="Marketing"
+            link="/blog/maximizing-roi-digital-marketing" // Add the link to the blog post
           />
           <BlogCard
             image="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
@@ -881,6 +883,7 @@ function BlogPage() {
             date="March 10, 2024"
             author="Samarth Kuwar"
             category="Branding"
+            link="/blog/strong-brand-identity" // Add the link to the blog post
           />
         </div>
       </div>
@@ -1203,9 +1206,9 @@ function ProcessStep({ number, title, description }) {
 }
 
 // Component for Blog Cards
-function BlogCard({ image, title, excerpt, date, author, category }) {
+function BlogCard({ image, title, excerpt, date, author, category, link }) {
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+    <a href={link} target="_blank" rel="noopener noreferrer" className="bg-white rounded-xl shadow-lg overflow-hidden">
       <img src={image} alt={title} className="w-full h-56 object-cover" />
       <div className="p-6">
         <div className="text-sm text-[#FF0000] mb-2">{category}</div>
@@ -1216,7 +1219,7 @@ function BlogCard({ image, title, excerpt, date, author, category }) {
           <span>{author}</span>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 
