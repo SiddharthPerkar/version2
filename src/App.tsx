@@ -947,6 +947,13 @@ function TeamPage({ setCurrentPage }) {
             role="CIO & Cofounder"
             description="Information systems expert ensuring seamless digital operations."
           />
+          {/* New Team Member Card */}
+          <TeamMemberCard
+            image="https://i.ibb.co/your-image-url.png" // Replace with the actual image URL for Purushottam
+            name="Purushottam Gaikwad"
+            role="Cofounder & Fullstack Developer"
+            description="Expert in both frontend and backend technologies, driving full-stack development."
+          />
         </div>
 
         <div className="mt-20 text-center">
@@ -1227,6 +1234,7 @@ function TestimonialCard({ name, company, content, image }) {
   );
 }
 
+// Component for Team Member Cards
 // Component for Team Member Cards
 function TeamMemberCard({ image, name, role, description }) {
   return (
