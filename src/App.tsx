@@ -885,6 +885,15 @@ function BlogPage() {
             category="Entrepreneurship"
             link="https://blog.thewebloom.tech/the-power-of-startups-why-you-dont-need-an-iit-tag-to-hire-iitians-043b61bda6aa" // Add the link to the blog post
           />
+          <BlogCard
+            image="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*bTwqM5nWAiFLnqYb_K7qgQ.jpeg"
+            title="Beacon Marketing: The Future of Personalized Advertising"
+            excerpt="When I was walking from one of the best burgers I could get at McDonald’s,..."
+            date="March 6, 2025"
+            author="Himanshu Singh"
+            category="Marketing"
+            link="https://blog.thewebloom.tech/beacon-marketing-the-future-of-personalized-advertising-05f5c61801ef" // Add the link to the blog post
+          />
         </div>
       </div>
     </div>
